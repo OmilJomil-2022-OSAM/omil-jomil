@@ -1,6 +1,14 @@
 # Backend
 
 
+
+## install
+
+pip install fastapi
+pip install "uvicorn[standard]"
+pip install "python-jose[cryptography]"
+pip install "passlib[bcrypt]"
+
 ## 파일 구조 설명
 
 AI : AI 코드가 들어갈 폴더

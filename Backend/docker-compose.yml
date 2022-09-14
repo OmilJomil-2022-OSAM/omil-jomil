@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/home/backend
+    ports:
+      - "7717:8000"
+    environment:
+      TZ: Asia/Seoul
