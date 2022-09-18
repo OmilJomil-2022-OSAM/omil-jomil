@@ -12,8 +12,14 @@ services:
       - "7717:8000"
     environment:
       TZ: Asia/Seoul
+      DB_NAME: ''
 
 volumes:
   dae-volume:
     external:
       name: dae_volume
+
+networks:
+  default:
+    name: omil_network
+    external: true
