@@ -27,6 +27,7 @@ RUN pip install "uvicorn[standard]"
 RUN pip install "python-jose[cryptography]"
 RUN pip install "passlib[bcrypt]"
 RUN pip install python-multipart
+RUN pip install sqlalchemy
 
 # dockerfile 기준으로 설치
 # COPY ./requirements.txt /home/backend 
