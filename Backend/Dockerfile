@@ -17,7 +17,7 @@ RUN apt-get -y install libgl1-mesa-glx
 # 작업 폴더 설정
 WORKDIR /home
 RUN mkdir "backend"
-WORKDIR /home/backend
+WORKDIR /home/backend/omil-jomil/Backend
 
 # 파이썬 라이브러리 설치
 RUN pip install --upgrade pip
@@ -26,12 +26,12 @@ RUN pip install fastapi
 RUN pip install "uvicorn[standard]"
 RUN pip install "python-jose[cryptography]"
 RUN pip install "passlib[bcrypt]"
-
+RUN pip install python-multipart
 
 # dockerfile 기준으로 설치
 # COPY ./requirements.txt /home/backend 
 # RUN pip install -r requirements.txt
 
 # 개발용으로 entrypoint.sh 파일를 연결
-COPY ./entrypoint.sh /home/backend 
-ENTRYPOINT ["sh", "/home/backend/entrypoint.sh"]
+# COPY ./entrypoint.sh /home/backend 
+ENTRYPOINT ["sh", "/home/backend/omil-jomil/Backend/entrypoint.sh"]

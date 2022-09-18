@@ -6,8 +6,14 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./:/home/backend
+      # - ./:/home/backend
+      - dae-volume:/home/backend
     ports:
       - "7717:8000"
     environment:
       TZ: Asia/Seoul
+
+volumes:
+  dae-volume:
+    external:
+      name: dae_volume
