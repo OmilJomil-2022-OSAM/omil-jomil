@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
 from sqlalchemy.orm import Session
@@ -25,6 +25,9 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
 ):
+    """
+    로그인을 위한 토큰 발급 api
+    """
     user = authenticate_user(db=db, uid=form_data.username, pw=form_data.password)
 
     if not user:
@@ -33,13 +36,18 @@ async def login_for_access_token(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    # 토큰 생성
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"uid": user.uid}, expires_delta=access_token_expires
     )
+    # 토큰 전달
     return {"access_token": access_token, "token_type": "bearer"}
 
 
 @router.get("/me/", response_model=UserDisplay)
 async def read_users_me(db: Session = Depends(get_db), current_user: str = Depends(get_current_user)):
+    """
+    현재 접속중인 유저가 누구인지 조회
+    """
     return current_user

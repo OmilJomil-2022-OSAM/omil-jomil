@@ -10,6 +10,11 @@ from app.token.schema import TokenData
 from app.user.crud import get_user_by_uid
 
 async def get_current_user(db:Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+    """
+    토큰을 가져와 현재 유저를 가져온다
+    """
+    
+    # 예외 선언
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -36,6 +41,9 @@ async def get_current_user(db:Session = Depends(get_db), token: str = Depends(oa
 
 
 def authenticate_user(db: Session, uid: str, pw: str):
+    """
+    유저조회
+    """
     user = get_user_by_uid(db, uid)
     if not user:
         return False

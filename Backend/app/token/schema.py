@@ -9,4 +9,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
+    """
+    토큰에 들어갈 데이터
+    """
     uid: Union[str, None] = None

@@ -7,7 +7,7 @@ from core.schema_core import AllOptional
 
 # Shared properties
 class UserBase(BaseModel):
-    name: str = Field(title="aaaaa")
+    name: str = Field(title="aaaaa", description='qqqqq')
     uid: str
     password: str
     number: str
