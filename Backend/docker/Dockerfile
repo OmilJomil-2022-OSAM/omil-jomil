@@ -28,6 +28,8 @@ RUN pip install "python-jose[cryptography]"
 RUN pip install "passlib[bcrypt]"
 RUN pip install python-multipart
 RUN pip install sqlalchemy
+RUN pip install psycopg2
+
 
 # dockerfile 기준으로 설치
 # COPY ./requirements.txt /home/backend 
