@@ -23,7 +23,9 @@ class UserUpdate(UserBase, metaclass=AllOptional):
     pass
 
 class UserDisplay(UserBase):
-    pass
+    id: int
+    class Config:
+        orm_mode = True
 
 
 # Properties shared by models stored in DB

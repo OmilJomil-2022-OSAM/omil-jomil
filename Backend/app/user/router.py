@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.requests import Request
 from sqlalchemy.orm import Session
+from typing import List
 
 from app.user.schema import UserDisplay, UserCreate
 from app.user import crud
@@ -30,11 +31,10 @@ async def create(user: UserCreate = Depends(), db: Session = Depends(get_db)):
 
 
 
-@router.get("/read")
-async def homepage(req: Request):
-    return JSONResponse({
-        'green': 'rain'
-    })
+@router.get("/read", response_model=List[UserDisplay])
+async def homepage(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = crud.get_users(db, skip=skip, limit=limit)
+    return users
 
 
 @router.get("/update")
