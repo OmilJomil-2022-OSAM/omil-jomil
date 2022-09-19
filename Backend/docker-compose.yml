@@ -12,7 +12,7 @@ services:
       - "7717:8000"
     environment:
       TZ: Asia/Seoul
-      DB_NAME: ''
+      DB_NAME: 'dfasfsdfs'
 
 volumes:
   dae-volume:
