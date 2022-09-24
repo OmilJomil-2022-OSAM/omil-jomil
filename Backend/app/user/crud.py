@@ -17,9 +17,14 @@ def create_user(db: Session, user: UserCreate):
         name=user.name, 
         uid=user.uid, 
         password=hashed_password, 
-        number=user.number,
+        dog_num=user.dog_num,
+        rank=user.rank,
+        army=user.army,
+        unit=user.unit,
+        disable=False
     )
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     return db_user
+7

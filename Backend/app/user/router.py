@@ -23,7 +23,11 @@ async def homepage(req: Request):
 
 
 @router.post("/create/", response_model=UserDisplay)
-async def create(user: UserCreate = Depends(), db: Session = Depends(get_db)):
+async def 회원가입(user: UserCreate = Depends(), db: Session = Depends(get_db)):
+    """
+    user 생성
+    회원가입때 사용하는 
+    """
     db_user = crud.get_user_by_uid(db, uid=user.uid)
     if db_user:
         raise HTTPException(status_code=400, detail="uid already registered")

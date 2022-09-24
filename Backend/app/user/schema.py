@@ -10,7 +10,10 @@ class UserBase(BaseModel):
     name: str = Field(title="aaaaa", description='qqqqq')
     uid: str
     password: str
-    number: str
+    dog_num: str
+    army: str
+    unit: str
+    rank: str
 
 
 # Properties to receive on item creation
@@ -20,19 +23,23 @@ class UserCreate(UserBase):
 
 # Properties to receive on item update
 class UserUpdate(UserBase, metaclass=AllOptional):
+    disable: bool
+
     pass
 
 class UserDisplay(UserBase):
     id: int
-    class Config:
-        orm_mode = True
-
-
-# Properties shared by models stored in DB
-class UserInDBBase(UserBase):
-    # id: int
-    # title: str
-    # owner_id: int
+    disable: bool
 
     class Config:
         orm_mode = True
+
+
+# # Properties shared by models stored in DB
+# class UserInDBBase(UserBase):
+#     # id: int
+#     # title: str
+#     # owner_id: int
+
+#     class Config:
+#         orm_mode = True

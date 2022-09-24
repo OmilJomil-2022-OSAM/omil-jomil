@@ -27,6 +27,9 @@ async def login_for_access_token(
 ):
     """
     로그인을 위한 토큰 발급 api
+    username - id
+    password - 비번
+    을 입력하면 jwt 토큰이 나옵니다.
     """
     user = authenticate_user(db=db, uid=form_data.username, pw=form_data.password)
 
